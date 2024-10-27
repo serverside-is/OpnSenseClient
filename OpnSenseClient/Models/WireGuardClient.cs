@@ -7,9 +7,13 @@ namespace OpnSenseClient.Models
     {
         // This one is not mapped to JSON, because the JSON format used stinks and provides this value outside of the client data object representation
         [JsonIgnore]
-        public string Id { get; set; } = string.Empty;
-        [JsonIgnore]
         public string ServerId { get; set; } = string.Empty;
+
+        [JsonIgnore]
+        public string ServerUuid { get; set; } = string.Empty;
+
+        [JsonPropertyName("uuid")]
+        public string Uuid { get; set; } = string.Empty;
 
         [JsonPropertyName("enabled")]
         public string Enabled { get; set; } = "0";
@@ -20,11 +24,8 @@ namespace OpnSenseClient.Models
         [JsonPropertyName("pubkey")]
         public string PubKey { get; set; } = string.Empty;
 
-        [JsonPropertyName("psk")]
-        public string Psk { get; set; } = string.Empty;
-
         [JsonPropertyName("tunneladdress")]
-        public Dictionary<string, TunnelAddressDetail> TunnelAddress { get; set; } = new Dictionary<string, TunnelAddressDetail>();
+        public string TunnelAddress { get; set; } = string.Empty;
 
         [JsonPropertyName("serveraddress")]
         public string ServerAddress { get; set; } = string.Empty;
@@ -32,31 +33,16 @@ namespace OpnSenseClient.Models
         [JsonPropertyName("serverport")]
         public string ServerPort { get; set; } = string.Empty;
 
-        [JsonPropertyName("endpoint")]
-        public string Endpoint { get; set; } = string.Empty;
-
-        [JsonPropertyName("keepalive")]
-        public string KeepAlive { get; set; } = string.Empty;
-
         [JsonPropertyName("servers")]
-        public Dictionary<string, ServerDetail> Servers { get; set; } = new Dictionary<string, ServerDetail>();
+        public string WireGuardServerUuid { get; set; } = string.Empty;
     }
 
-    public class TunnelAddressDetail
+    public class WireGuardServer
     {
-        [JsonPropertyName("value")]
-        public string Value { get; set; } = string.Empty;
+        [JsonPropertyName("uuid")]
+        public string Uuid { get; set; } = string.Empty;
 
-        [JsonPropertyName("selected")]
-        public int Selected { get; set; }
-    }
-
-    public class ServerDetail
-    {
-        [JsonPropertyName("value")]
-        public string Value { get; set; } = string.Empty;
-
-        [JsonPropertyName("selected")]
-        public int Selected { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; } = string.Empty;
     }
 }
