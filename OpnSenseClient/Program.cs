@@ -12,7 +12,7 @@ public class Program
     public static async Task Main(string[] args)
     {
         await SyncMediapostRoadWarriord();
-        //await SyncMediapostRoadWarriordUpdate();
+        await SyncMediapostRoadWarriordUpdate();
 
         // wait for a key press before closing the console
         Console.WriteLine("Press any key to exit...");
